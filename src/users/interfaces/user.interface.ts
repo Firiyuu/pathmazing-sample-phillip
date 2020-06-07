@@ -8,7 +8,7 @@ export interface User extends Document{
     password: string;
     writer: boolean;
     headline: string;
-    role: string;
+    admin: boolean;
     hours: number;
     verified: boolean;
     created: Date;

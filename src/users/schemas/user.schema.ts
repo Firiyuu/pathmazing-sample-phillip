@@ -9,7 +9,10 @@ export const UserSchema = new mongoose.Schema({
   },
   writer: Boolean,
   headline: String,
-  role: String,
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   hours: Number,
   verified: Boolean,
   created: { type: Date, default: Date.now},

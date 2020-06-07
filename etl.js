@@ -5,7 +5,6 @@ const axios = require('axios');
     const { data } = await axios.post('http://localhost:3000/auth/login', {
       username: 'Phil23lip',
       password: '1234567',
-      seller: true,
     });
     console.log(data);
 

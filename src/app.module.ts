@@ -11,15 +11,20 @@ import { UsersModule } from './users/users.module';
 import { AuthService } from './auth/auth.service';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
-
+import { APP_GUARD } from '@nestjs/core';
 
 
 
 import config from './config/keys';
+import { RolesGuard } from './guards/roles.guard';
 
 @Module({
   imports: [ItemsModule, UsersModule, MongooseModule.forRoot(config.mongoURI), SharedModule, AuthModule],
   controllers: [AppController, ItemsController, UsersController],
-  providers: [AppService, ItemsService, UsersService, AuthService],
+  providers: [AppService, ItemsService, UsersService, AuthService,  {
+    provide: APP_GUARD,
+    useClass: RolesGuard,
+  },
+],
 })
 export class AppModule {}
